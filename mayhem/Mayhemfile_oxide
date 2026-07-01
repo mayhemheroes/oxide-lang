@@ -1,0 +1,12 @@
+project: oxide-lang
+target: oxide
+
+cmds:
+    - cmd: /mayhem/oxide @@
+      filepath: /tmp/input.ox
+      env:
+        MFUZZ_COMPAT_LEVEL: "1"
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/oxide/testsuite

@@ -1,0 +1,25 @@
+[package]
+name = "oxide-lang-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2018"
+
+# Standalone workspace so this ADDITIVE fuzz crate is not pulled into the upstream
+# workspace (whose root Cargo.toml we must not edit).
+[workspace]
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+oxide-parser = { path = "../../oxide-parser" }
+
+# Parser front-end (lexer + recursive-descent parser), via the crate's public,
+# non-diverging API.
+[[bin]]
+name = "parse"
+path = "fuzz_targets/parse.rs"
+test = false
+doc = false
+bench = false

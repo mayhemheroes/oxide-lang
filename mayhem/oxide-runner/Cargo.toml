@@ -1,0 +1,17 @@
+[package]
+name = "oxide-runner"
+version = "0.0.0"
+publish = false
+edition = "2018"
+
+# Standalone workspace: this ADDITIVE crate must not join the upstream workspace
+# (whose root Cargo.toml we must not edit).
+[workspace]
+
+[[bin]]
+name = "oxide"
+path = "src/main.rs"
+
+[dependencies]
+oxide-parser = { path = "../../oxide-parser" }
+oxide-interpreter = { path = "../../oxide-interpreter" }
